@@ -1,0 +1,2975 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고명 - 숙성돼지고기 전문점 | 가맹문의</title>
+  <meta name="description" content="숙성돼지고기 전문점 고명. 매출이 나게 설계된 프랜차이즈. 가맹 상담 신청." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #2C1810;
+      background: #FAF6F0;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== COLOR VARIABLES ===== */
+    :root {
+      --brown-dark: #2C1810;
+      --brown: #4A2C1A;
+      --brown-mid: #6B4226;
+      --brown-light: #8B6342;
+      --beige-dark: #D4C4A8;
+      --beige: #E8DCC8;
+      --beige-light: #FAF6F0;
+      --cream: #FFF8ED;
+      --gold: #C9A96E;
+      --gold-light: #E0C98A;
+      --white: #FFFFFF;
+      --serif: 'Noto Serif KR', serif;
+      --sans: 'Noto Sans KR', sans-serif;
+    }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .serif { font-family: var(--serif); }
+    .text-center { text-align: center; }
+    .text-gold { color: var(--gold); }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-60px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-left.active { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(60px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-right.active { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0; transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-scale.active { opacity: 1; transform: scale(1); }
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+    .delay-4 { transition-delay: 0.6s; }
+
+    /* ===== GNB ===== */
+    .gnb {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(44, 24, 16, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      transition: all 0.3s ease;
+    }
+    .gnb.scrolled {
+      background: rgba(44, 24, 16, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .gnb-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 70px;
+    }
+    .gnb-logo img { height: 40px; filter: brightness(0) invert(1); }
+    .gnb-logo-text {
+      font-family: var(--serif);
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 4px;
+    }
+    .gnb-menu { display: flex; gap: 32px; }
+    .gnb-menu a {
+      color: rgba(255,255,255,0.75); font-size: 0.88rem;
+      font-weight: 400; letter-spacing: 0.5px;
+      transition: color 0.3s; position: relative;
+    }
+    .gnb-menu a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px; background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .gnb-menu a:hover { color: #fff; }
+    .gnb-menu a:hover::after { width: 100%; }
+    .gnb-cta {
+      background: var(--gold); color: var(--brown-dark);
+      padding: 10px 24px; border-radius: 4px;
+      font-size: 0.85rem; font-weight: 700; transition: all 0.3s;
+    }
+    .gnb-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .gnb-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .gnb-toggle span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: var(--brown-dark);
+    }
+    .hero-video-wrap { position: absolute; inset: 0; z-index: 1; }
+    .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; }
+    .hero-placeholder {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1a0e08 0%, #3d1f0e 40%, #2C1810 100%);
+      z-index: 2;
+    }
+    .hero-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,0.05)" stroke-width="0.5"/></svg>') center/400px repeat;
+      opacity: 0.5;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(44,24,16,0.4) 0%, rgba(44,24,16,0.5) 60%, rgba(44,24,16,1) 85%, rgba(44,24,16,1) 100%);
+      z-index: 3;
+    }
+    .hero-content {
+      position: relative; z-index: 4;
+      text-align: center; color: #fff;
+      padding: 0 24px; max-width: 800px;
+    }
+    .hero-main-logo { margin-bottom: 35px; display: flex; justify-content: center; }
+    .hero-main-logo img { width: 150px; height: auto; }
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.5;
+      margin-bottom: 24px; color: #fff;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-content h1 .highlight { color: var(--gold); }
+    .hero-content .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.7); line-height: 1.9;
+      margin-bottom: 12px; font-weight: 300;
+    }
+    .hero-content .hero-bottom-line {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--gold-light); margin-top: 32px;
+      font-weight: 400; letter-spacing: 1px;
+    }
+    .hero-scroll-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.4); font-size: 0.75rem; letter-spacing: 2px;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .hero-scroll-indicator .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(180deg, rgba(201,169,110,0.6), transparent);
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    .section { padding: 120px 0; }
+    .section-dark { background: var(--brown-dark); color: #fff; }
+    .section-cream { background: var(--cream); }
+    .section-beige { background: var(--beige-light); }
+    .section-brown { background: var(--brown); color: #fff; }
+    .section-tag {
+      display: inline-block; font-size: 0.78rem; font-weight: 500;
+      color: var(--gold); letter-spacing: 4px; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-dark .section-tag { color: var(--gold); }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.5; margin-bottom: 20px;
+    }
+    .section-dark .section-title { color: #fff; }
+    .section-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: var(--brown-light); line-height: 1.8;
+      max-width: 700px; font-weight: 300;
+    }
+    .section-dark .section-desc { color: rgba(255,255,255,0.6); }
+    .section-highlight {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold); font-weight: 600; margin-top: 24px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(201,169,110,0.2);
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+    }
+
+    /* ===== PROBLEM ===== */
+    .problem-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin: 48px 0;
+    }
+    .problem-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 75, 75, 0.1); /* 미세한 레드 테두리 */
+      border-radius: 12px;
+      padding: 60px 30px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 250px;
+      position: relative; /* 숫자 배치를 위함 */
+      overflow: hidden;
+      border-left: 4px solid #FF4B4B; /* 왼쪽 강렬한 경고 선 */
+    }
+
+    /* 배경에 깔리는 거대 숫자 */
+    .problem-card::after {
+      content: attr(data-num); /* HTML에서 숫자를 가져옴 */
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(255, 75, 75, 0.05); /* 아주 은은한 레드 숫자 */
+      z-index: 0;
+      font-family: var(--sans);
+    }
+
+    .problem-card:hover {
+      background: rgba(255, 75, 75, 0.08); /* 호버 시 붉은 기운 */
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(255, 75, 75, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .problem-card h4 {
+      position: relative;
+      z-index: 1;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: -1px;
+      /* 네온 효과: 글자에서 미세하게 붉은 빛이 나옴 */
+      text-shadow: 0 0 15px rgba(255, 75, 75, 0.3); 
+    }
+
+    .problem-card p {
+      position: relative;
+      z-index: 1;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+    .problem-bottom {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: rgba(255,255,255,0.85); text-align: center;
+      margin-top: 40px; font-weight: 600;
+    }
+    .problem-bottom span { color: var(--gold); }
+
+    /* ===== SOLUTION ===== */
+    .solution-box {
+      background: var(--brown-dark); border-radius: 12px;
+      padding: 60px 48px; margin-top: 48px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .solution-box::before {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(201,169,110,0.15);
+      border-radius: 12px; pointer-events: none;
+    }
+    .solution-box h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      color: #fff; line-height: 1.6; margin-bottom: 24px; font-weight: 700;
+    }
+    .solution-box .accent {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .solution-box p { color: rgba(255,255,255,0.6); font-size: 1.05rem; line-height: 1.8; }
+    .solution-keyline {
+      display: inline-block; margin-top: 32px; padding: 16px 36px;
+      border: 1px solid var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: var(--gold); font-weight: 600; letter-spacing: 1px;
+    }
+
+    /* ===== DIFFERENTIATORS ===== */
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; margin-top: 48px;
+    }
+    .diff-card {
+      background: #fff; border-radius: 12px;
+      padding: 44px 36px;
+      border: 1px solid rgba(107,66,38,0.08);
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .diff-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 0; background: var(--gold);
+      transition: height 0.5s ease;
+    }
+    .diff-card:hover::before { height: 100%; }
+    .diff-card:hover { box-shadow: 0 12px 40px rgba(44,24,16,0.08); transform: translateY(-4px); }
+    .diff-card .num {
+      font-family: var(--serif); font-size: 0.85rem;
+      color: var(--gold); font-weight: 700;
+      letter-spacing: 2px; margin-bottom: 16px;
+    }
+    .diff-card h4 {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-weight: 700; color: var(--brown-dark); margin-bottom: 12px;
+    }
+    .diff-card p { font-size: 0.95rem; color: var(--brown-light); line-height: 1.7; }
+    .diff-card-img {
+      margin-top: 20px; border-radius: 8px; overflow: hidden;
+      background: var(--beige); min-height: 180px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .diff-card-img img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 8px;
+    }
+    .diff-card-img .placeholder-text {
+      color: var(--brown-light); font-size: 0.85rem; padding: 20px; text-align: center;
+    }
+    /* 인테리어 3D 슬라이드 스타일 */
+    .interior-slider {
+  position: relative;
+    }
+    .interior-slider img.slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out; /* 0.8초 동안 부드럽게 겹치며 전환 */
+    }
+    .interior-slider img.slide.active {
+  opacity: 1;
+    }
+    /* 리뷰 자동 슬라이드 스타일 (비율 수정) */
+    .review-slider {
+      position: relative;
+      aspect-ratio: 1 / 1; /* 리뷰 영수증/텍스트가 잘 들어가도록 정방형으로 변경 */
+      background-color: #FAF6F0; /* 남는 여백이 어색하지 않게 배경색 통일 */
+      border-radius: 8px;
+      width: 100%;
+    }
+    .review-slider img.slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* 👇 cover(강제로 꽉 채워 자름)에서 contain(원본 비율 유지하며 프레임 안에 쏙 넣음)으로 변경 👇 */
+      object-fit: contain; 
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      cursor: pointer;
+    }
+    .review-slider img.slide.active {
+      opacity: 1;
+    }
+
+    /* (반응형 추가) 모바일에서 비율 조절 */
+    @media (max-width: 768px) {
+      .review-slider {
+        /* 모바일도 PC와 동일하게 가로 비율로 통일 */
+        aspect-ratio: 16 / 9; /* 기존 4 / 3에서 수정 */
+      }
+    }
+    /* Review images row for brand card */
+    .review-images {
+      display: flex; gap: 12px; margin-top: 20px;
+    }
+    .review-img-item {
+      flex: 1; aspect-ratio: 1;
+      border-radius: 8px; overflow: hidden;
+      background: var(--beige); display: flex;
+      align-items: center; justify-content: center;
+    }
+    .review-img-item img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .review-img-item .placeholder-text {
+      color: var(--brown-light); font-size: 0.72rem; text-align: center; padding: 8px;
+    }
+    /* 로고 이미지 스타일 */
+    .review-logo {
+      position: absolute;
+      top: 30px; /* 카드의 위쪽에서 30px */
+      right: 30px; /* 카드의 오른쪽에서 30px */
+      width: 60px; /* 너비 60px */
+      height: auto;
+      opacity: 0.7; /* 은은하게 (투명도 70%) */
+    }
+
+    /* 부모 카드에 position: relative; 추가 (이미 추가되어 있을 수도 있음) */
+    .diff-card {
+      position: relative;
+    }
+    /* ===== 세트 메뉴 썸네일 & 팝업 스타일 ===== */
+    .set-thumb {
+      flex: 1;
+      position: relative;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .set-thumb img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .set-thumb:hover img {
+      transform: scale(1.05);
+    }
+    .set-thumb .thumb-name {
+      background: var(--brown-dark);
+      color: var(--gold);
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 8px 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      z-index: 1;
+    }
+    
+    /* 팝업 모달 하단 세트 이름 스타일 */
+    .set-menu-caption {
+      position: absolute;
+      bottom: -40px;
+      width: 100%;
+      text-align: center;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    /* ===== MENU ===== */
+    .menu-section { background: var(--brown-dark); color: #fff; overflow: hidden; }
+    .menu-carousel-wrap {
+      position: relative; margin: 48px auto 0;
+      max-width: 600px; overflow: hidden; border-radius: 12px;
+    }
+    .menu-carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .menu-slide {
+      min-width: 100%; aspect-ratio: 4/3;
+      background: var(--brown-mid);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px; position: relative;
+    }
+    .menu-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .menu-slide-placeholder { color: rgba(255,255,255,0.3); font-size: 0.9rem; }
+    .menu-slide-title {
+      font-family: var(--serif); color: var(--gold); font-size: 1.1rem;
+    }
+    .menu-slide-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 16px 20px;
+      background: linear-gradient(transparent, rgba(44,24,16,0.85));
+      font-family: var(--serif); color: #fff; font-size: 1.1rem;
+      text-align: center; font-weight: 600;
+    }
+    .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
+    .carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s;
+    }
+    .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+    /* Side dishes */
+    .side-dishes {
+      margin-top: 80px; padding-top: 60px;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    .side-dishes h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      text-align: center; margin-bottom: 40px; color: #fff;
+    }
+    .side-dishes h3 span { color: var(--gold); }
+    .sides-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .side-item {
+      text-align: center; padding: 24px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,169,110,0.1);
+      border-radius: 8px; transition: all 0.3s;
+    }
+    .side-item:hover { background: rgba(201,169,110,0.08); transform: translateY(-3px); }
+    .side-item-img {
+      width: 100%; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden;
+      background: var(--brown-mid); margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .side-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .side-item-img .placeholder-text { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+    .side-item h5 {
+      font-family: var(--serif); font-size: 1rem;
+      color: var(--gold-light); margin-bottom: 6px;
+    }
+    .side-item p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+
+    /* ===== REVENUE ===== */
+    .revenue-section { position: relative; }
+    .revenue-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; margin-top: 48px;
+    }
+    .pie-chart-wrap { display: flex; flex-direction: column; align-items: center; }
+    
+    /* 1. 크기를 살짝 줄임 (320px -> 280px) */
+    .pie-chart { position: relative; width: 320px; height: 320px; }
+    
+    /* 2. 그래프 회전 애니메이션 준비 (-270도에서 시작) */
+    .pie-chart svg { 
+      transform: rotate(-270deg); 
+      opacity: 0;
+      transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s ease;
+    }
+    .pie-chart.animated svg {
+      transform: rotate(-90deg);
+      opacity: 1;
+    }
+
+    /* 3. 가운데 텍스트 페이드인 + 스케일업 애니메이션 준비 */
+    .pie-chart-center {
+      position: absolute; top: 50%; left: 50%;
+      /* 초기 상태: 살짝 아래에 있고 크기가 작음 */
+      transform: translate(-50%, -30%) scale(0.8); 
+      opacity: 0;
+      text-align: center;
+      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition-delay: 0.3s; /* 그래프가 그려지기 시작한 직후 등장 */
+    }
+    .pie-chart.animated .pie-chart-center {
+      /* 최종 상태: 정중앙, 원래 크기 */
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    
+    .pie-chart-center .amount {
+      font-family: var(--serif); font-size: 2rem;
+      font-weight: 900; color: var(--gold);
+    }
+    .pie-chart-center .label {
+      font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 4px;
+    }
+    .pie-legend {
+      margin-top: 32px; display: flex; flex-direction: column;
+      gap: 12px; width: 100%; max-width: 380px;
+    }
+    .pie-legend-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; }
+    .pie-legend-item .left { display: flex; align-items: center; gap: 10px; }
+    .pie-legend-item .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .pie-legend-item .name { color: rgba(255,255,255,0.75); }
+    .pie-legend-item .value { font-weight: 700; color: #fff; }
+    .revenue-text h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: #fff; line-height: 1.7; margin-bottom: 20px;
+    }
+    .revenue-text h3 span { color: var(--gold); }
+    .revenue-bottom {
+      font-size: 0.95rem; color: rgba(255,255,255,0.6);
+      line-height: 1.8; margin-top: 20px;
+    }
+    .revenue-highlight-box {
+      margin-top: 28px; padding: 28px 32px;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 8px;
+    }
+    .revenue-highlight-box .hl-number {
+      font-family: var(--serif); font-size: 1.8rem;
+      font-weight: 900; color: var(--gold); margin-bottom: 8px;
+    }
+    .revenue-highlight-box .hl-label {
+      font-size: 0.95rem; color: rgba(255,255,255,0.75); margin-bottom: 12px;
+    }
+    .revenue-highlight-box .hl-sub {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .revenue-highlight-box .hl-sub span {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; background: rgba(201,169,110,0.12);
+      border-radius: 20px; font-size: 0.82rem;
+      font-weight: 600; color: var(--gold-light);
+    }
+    /* 새로 추가할 하얀색 굵은 텍스트 스타일 */
+    .revenue-highlight-box .hl-top-text {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      word-break: keep-all;
+    }
+
+    /* ===== PROVEN DESIGNER (CEO) ===== */
+    .ceo-section { position: relative; overflow: hidden; }
+    .ceo-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start; margin-top: 48px;
+    }
+    .ceo-images {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .ceo-img-item {
+      border-radius: 12px; overflow: hidden;
+      background: var(--beige); aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ceo-img-item img { width: 100%; height: 100%; object-fit: cover; }
+    .ceo-img-item .placeholder-text {
+      color: var(--brown-light); font-size: 0.85rem; text-align: center; padding: 20px;
+    }
+    .ceo-track-list {
+      list-style: none; padding: 0; margin: 28px 0;
+    }
+    .ceo-track-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(107,66,38,0.08);
+      font-size: 0.95rem; color: var(--brown-mid);
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.6;
+    }
+    .ceo-track-list li::before {
+      content: ''; flex-shrink: 0;
+      width: 6px; height: 6px;
+      background: var(--gold); border-radius: 50%;
+      margin-top: 8px;
+    }
+    .ceo-key-highlight {
+      padding: 28px 32px; margin: 32px 0;
+      background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+      border-radius: 12px; color: #fff;
+      border-left: 5px solid var(--gold);
+    }
+    .ceo-key-highlight h4 {
+      font-family: var(--serif); font-size: 1.15rem;
+      font-weight: 700; color: var(--gold);
+      margin-bottom: 10px; line-height: 1.6;
+    }
+    .ceo-key-highlight p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.7;
+    }
+    .ceo-closing-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold); font-weight: 600;
+      margin-top: 20px; line-height: 1.7;
+      padding: 20px 0;
+      border-top: 1px solid rgba(201,169,110,0.2);
+    }
+
+    /* ===== BEFORE & AFTER ===== */
+    .ba-section { overflow: hidden; }
+    .ba-grid {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 0; margin-top: 48px; align-items: stretch;
+    }
+    .ba-card {
+      padding: 48px 36px; border-radius: 12px;
+      text-align: center; position: relative;
+    }
+    .ba-card.before {
+      background: #3a2218; color: rgba(255,255,255,0.7);
+    }
+    .ba-card.after {
+      background: linear-gradient(135deg, #1a3a1a, #2a4a2a);
+      color: #fff; border: 2px solid rgba(201,169,110,0.4);
+    }
+    .ba-card-img {
+      width: 100%; aspect-ratio: 4/3;
+      border-radius: 8px; overflow: hidden;
+      margin-bottom: 24px; background: rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ba-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .ba-card-img .placeholder-text { font-size: 0.85rem; opacity: 0.5; }
+    .ba-label {
+      font-family: var(--serif); font-size: 0.85rem;
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 12px; color: rgba(255,255,255,0.5);
+    }
+    .ba-amount {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; margin-bottom: 8px;
+    }
+    .ba-card.before .ba-amount { color: rgba(255,255,255,0.5); }
+    .ba-card.after .ba-amount { color: var(--gold); }
+    .ba-desc { font-size: 0.9rem; line-height: 1.6; }
+    .ba-arrow {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 24px; color: var(--gold); font-size: 2.5rem;
+    }
+    .ba-bottom-text {
+      text-align: center; margin-top: 48px;
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.8); line-height: 1.8;
+    }
+    .ba-bottom-text strong { color: var(--gold); }
+
+    /* ===== DIAGNOSIS ===== */
+    .diag-section { position: relative; }
+    .diag-box {
+      max-width: 800px; margin: 48px auto 0;
+      background: #fff; border-radius: 16px;
+      padding: 48px 40px; box-shadow: 0 8px 40px rgba(44,24,16,0.08);
+      border: 1px solid rgba(107,66,38,0.08);
+    }
+    .diag-checklist { margin: 0 0 32px; }
+    .diag-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(107,66,38,0.06);
+      cursor: pointer; transition: background 0.2s;
+      user-select: none;
+    }
+    .diag-item:hover { background: rgba(201,169,110,0.04); margin: 0 -16px; padding: 16px 16px; border-radius: 8px; }
+    .diag-checkbox {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border: 2px solid var(--beige-dark); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .diag-checkbox.checked {
+      background: var(--gold); border-color: var(--gold);
+    }
+    .diag-checkbox.checked::after {
+      content: '\2713'; color: #fff; font-size: 0.85rem; font-weight: 700;
+    }
+    .diag-item-text { font-size: 0.95rem; color: var(--brown-dark); line-height: 1.5; }
+    .diag-results {
+      background: var(--beige-light); border-radius: 12px;
+      padding: 28px 32px; margin-bottom: 32px;
+    }
+    .diag-results h4 {
+      font-family: var(--serif); font-size: 1.1rem;
+      font-weight: 700; color: var(--brown-dark);
+      margin-bottom: 16px;
+    }
+    .diag-result-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 0; font-size: 0.9rem; color: var(--brown-mid);
+    }
+    .diag-result-badge {
+      flex-shrink: 0; padding: 4px 12px; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 700; min-width: 70px; text-align: center;
+    }
+    .diag-result-badge.safe { background: #E8F5E9; color: #2E7D32; }
+    .diag-result-badge.warning { background: #FFF3E0; color: #E65100; }
+    .diag-result-badge.danger { background: #FFEBEE; color: #C62828; }
+    .diag-counter {
+      text-align: center; margin-bottom: 20px;
+      font-family: var(--serif); font-size: 1.3rem;
+      font-weight: 700; color: var(--brown-dark);
+    }
+    .diag-counter span { color: var(--gold); font-size: 2rem; }
+    .diag-warning {
+      text-align: center; font-family: var(--serif);
+      font-size: 1rem; color: #C62828;
+      font-weight: 600; margin-bottom: 20px;
+    }
+    .diag-cta {
+      display: block; width: 100%; text-align: center;
+      padding: 18px; background: var(--brown-dark);
+      color: var(--gold); font-family: var(--serif);
+      font-size: 1.05rem; font-weight: 700;
+      border: none; border-radius: 8px; cursor: pointer;
+      letter-spacing: 1px; transition: all 0.3s;
+    }
+    .diag-cta:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,24,16,0.2); }
+
+    /* ===== SYSTEM (with BG image) ===== */
+    .system-section-wrap {
+      position: relative;
+    }
+    .system-bg-img {
+      position: absolute; inset: 0;
+      z-index: 0; opacity: 0.06;
+    }
+    .system-bg-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .system-section-wrap > .container { position: relative; z-index: 1; }
+    .system-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .system-card {
+      background: rgba(201,169,110,0.05);
+      border: 1px solid rgba(201,169,110,0.12);
+      border-radius: 12px; padding: 40px 24px;
+      text-align: center; transition: all 0.4s;
+    }
+    .system-card:hover { background: rgba(201,169,110,0.12); transform: translateY(-4px); }
+    .system-card .sys-icon {
+      width: 56px; height: 56px; margin: 0 auto 20px;
+      background: rgba(201,169,110,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .system-card h4 {
+      font-family: var(--serif); font-size: 1.1rem;
+      font-weight: 700; color: #fff; margin-bottom: 10px;
+    }
+    .system-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ===== COST TABLE (Split) ===== */
+    .cost-table-wrap {
+      margin-top: 48px; overflow: hidden;
+      border-radius: 12px; border: 1px solid rgba(107,66,38,0.1);
+    }
+    .cost-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .cost-table thead th {
+      background: var(--brown-dark);
+      color: var(--gold);
+      font-family: var(--serif); font-size: 0.95rem;
+      font-weight: 600; padding: 18px 20px;
+      text-align: center; letter-spacing: 1px;
+    }
+    .cost-table thead th:first-child { text-align: left; }
+    .cost-table tbody td {
+      padding: 18px 20px; font-size: 0.92rem;
+      border-bottom: 1px solid rgba(107,66,38,0.06);
+      vertical-align: middle; text-align: center;
+    }
+    .cost-table tbody td:first-child { text-align: left; }
+    .cost-table tbody tr { background: #fff; transition: background 0.3s; }
+    .cost-table tbody tr:hover { background: var(--cream); }
+    .cost-table tbody tr:nth-child(even) { background: var(--beige-light); }
+    .cost-table tbody tr:nth-child(even):hover { background: var(--beige); }
+    .cost-table .item-name { font-weight: 700; color: var(--brown-dark); }
+    .cost-table .cost-val {
+      font-family: var(--serif); font-size: 1rem;
+      font-weight: 700; color: var(--brown-dark);
+    }
+    .cost-table .cost-note { font-size: 0.82rem; color: var(--brown-light); }
+    .cost-table .badge-free {
+      display: inline-block; background: var(--gold);
+      color: var(--brown-dark); font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; margin-left: 6px;
+    }
+    .cost-table .badge-discount {
+      display: inline-block; background: #E74C3C;
+      color: #fff; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; margin-left: 6px;
+    }
+    .cost-table .original-price {
+      text-decoration: line-through; color: var(--beige-dark);
+      font-size: 0.85rem; margin-right: 6px;
+    }
+    /* Total row */
+    .cost-table .total-row td {
+      background: var(--brown-dark); color: #fff;
+      font-weight: 700; font-size: 1.05rem;
+      font-family: var(--serif); padding: 22px 20px;
+    }
+    .cost-table .total-row .total-highlight {
+      color: var(--gold); font-size: 1.3rem; font-weight: 900;
+    }
+    .cost-table .total-row .total-remodel {
+      color: #FF6B4A; font-size: 1.6rem; font-weight: 900;
+    }
+    .cost-note-box {
+      margin-top: 16px; padding: 16px 24px;
+      background: var(--cream); border-radius: 8px;
+      font-size: 0.85rem; color: var(--brown-mid); line-height: 1.7;
+    }
+    /* 업종 변경 강조 배너 */
+    .remodel-banner {
+      margin-top: 32px; padding: 36px 40px;
+      background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+      border-radius: 12px; text-align: center;
+      border: 2px solid var(--gold);
+    }
+    .remodel-banner h3 {
+      font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: #fff; margin-bottom: 8px;
+    }
+    .remodel-banner .price {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900; color: var(--gold);
+      margin: 12px 0;
+      text-shadow: 0 0 40px rgba(201,169,110,0.4);
+    }
+    .remodel-banner p {
+      font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7;
+    }
+
+    /* ===== CLOSING ===== */
+    .closing-section {
+      text-align: center; padding: 120px 0;
+      background: linear-gradient(180deg, var(--beige-light) 0%, var(--cream) 100%);
+    }
+    .closing-section .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 28px;
+    }
+    .closing-section .closing-desc {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--brown-light); line-height: 2;
+      max-width: 700px; margin: 0 auto 36px;
+    }
+    .closing-cta-btn {
+      display: inline-block; background: var(--brown-dark);
+      color: var(--gold); font-family: var(--serif);
+      font-size: 1.1rem; font-weight: 600;
+      padding: 18px 48px; border-radius: 6px;
+      letter-spacing: 2px; transition: all 0.3s;
+    }
+    .closing-cta-btn:hover {
+      background: var(--brown); transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(44,24,16,0.2);
+    }
+
+    /* ===== DB FORM ===== */
+    .form-section {
+      padding: 100px 0 160px; background: var(--brown-dark);
+      color: #fff; text-align: center;
+    }
+    .form-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .form-title .bold { font-weight: 900; }
+    .form-title .light { font-weight: 300; font-size: 0.85em; }
+    .form-subtitle {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5); margin-bottom: 48px;
+    }
+    .form-subtitle2 {
+      font-size: 0.85rem; color: var(--gold);
+      margin-bottom: 12px; font-weight: 500;
+    }
+    .form-10-highlight {
+      display: inline-block; margin-bottom: 24px;
+      padding: 14px 32px; background: rgba(201,169,110,0.12);
+      border: 2px solid var(--gold); border-radius: 8px;
+      font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700; color: var(--gold);
+      animation: highlightPulse 2s ease-in-out infinite;
+    }
+    @keyframes highlightPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.3); }
+      50% { box-shadow: 0 0 20px 4px rgba(201,169,110,0.2); }
+    }
+    .form-benefits {
+      max-width: 640px; margin: 0 auto 36px;
+      font-size: 0.95rem; color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+    .form-phone-display {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin: 24px 0;
+      font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900; color: var(--gold);
+    }
+    .form-phone-display a { color: var(--gold); transition: color 0.3s; }
+    .form-phone-display a:hover { color: var(--gold-light); }
+    .form-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; max-width: 640px; margin: 0 auto 24px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-input {
+      width: 100%; padding: 16px 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 6px; color: #fff;
+      font-family: var(--sans); font-size: 0.95rem;
+      transition: all 0.3s; outline: none;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
+    .form-input.select { appearance: none; cursor: pointer; }
+    .form-submit {
+      display: block; width: 100%; max-width: 640px;
+      margin: 0 auto; padding: 18px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--brown-dark); font-family: var(--serif);
+      font-size: 1.1rem; font-weight: 700;
+      border: none; border-radius: 6px;
+      cursor: pointer; letter-spacing: 2px; transition: all 0.3s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,110,0.4); }
+    .form-notice {
+      max-width: 640px; margin: 16px auto 0;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3); text-align: left;
+    }
+    .form-bottom-line {
+      margin-top: 48px; font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: var(--gold); font-weight: 400; letter-spacing: 0.5px;
+    }
+
+    /* ===== BALANCE (워라밸) ===== */
+    .balance-section { background: var(--cream); }
+    .balance-header { text-align: center; margin-bottom: 60px; }
+    .balance-header .section-title {
+      color: var(--brown-dark);
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      line-height: 1.5;
+    }
+    .balance-header .section-title span { color: var(--gold); }
+    .balance-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; max-width: 1100px; margin: 0 auto;
+    }
+    .balance-card {
+      background: #fff; border-radius: 16px;
+      padding: 56px 36px 48px;
+      text-align: center;
+      border: 1px solid rgba(107,66,38,0.06);
+      box-shadow: 0 4px 24px rgba(44,24,16,0.04);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .balance-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(44,24,16,0.1);
+      border-color: rgba(201,169,110,0.3);
+    }
+    .balance-card-num {
+      font-family: var(--serif);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 4px;
+      margin-bottom: 24px; display: block;
+    }
+    .balance-card-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 20px rgba(201,169,110,0.25);
+    }
+    .balance-card h4 {
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 16px; line-height: 1.5;
+    }
+    .balance-card p {
+      font-size: 0.93rem;
+      color: var(--brown-light);
+      line-height: 1.8;
+    }
+
+    /* ===== SPACE (지점 인테리어) ===== */
+    .space-section { background: var(--brown-dark); color: #fff; }
+    .space-header { text-align: center; margin-bottom: 56px; }
+    .space-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 32px; max-width: 1100px; margin: 0 auto;
+    }
+    .space-card {
+      position: relative; border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--brown-mid);
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .space-card:hover { transform: translateY(-6px); }
+    .space-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .space-card:hover img { transform: scale(1.06); }
+    .space-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(44,24,16,0.92) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 36px;
+    }
+    .space-card-label {
+      font-family: var(--serif);
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 4px; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .space-card-name {
+      font-family: var(--serif);
+      font-size: 1.7rem; font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .space-card-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.95rem;
+    }
+    /* 율하점 이미지 자동 슬라이드 스타일 */
+    .space-card.yulha-slider img.slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out, transform 0.8s ease;
+      z-index: 1;
+    }
+    .space-card.yulha-slider img.slide.active {
+      opacity: 1;
+    }
+    /* 오버레이(텍스트)가 이미지 위에 항상 보이도록 설정 */
+    .space-card.yulha-slider .space-card-overlay {
+      z-index: 2;
+    }
+    /* 자은점 이미지 자동 슬라이드 스타일 */
+    .space-card.jaeun-slider img.slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out, transform 0.8s ease;
+      z-index: 1;
+    }
+    .space-card.jaeun-slider img.slide.active {
+      opacity: 1;
+    }
+    .space-card.jaeun-slider .space-card-overlay {
+      z-index: 2;
+    }
+
+    /* ===== REVIEWS (Replaces DIFFERENTIATORS) ===== */
+    .reviews-section {
+      background: var(--beige-light);
+      overflow: hidden;
+    }
+    .reviews-header { text-align: center; margin-bottom: 48px; }
+    .reviews-key-copy {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 14px 36px;
+      background: var(--brown-dark);
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 700;
+      border-radius: 50px;
+      letter-spacing: 1px;
+    }
+    .reviews-key-copy strong {
+      color: var(--gold-light);
+      font-size: 1.15em;
+    }
+    .reviews-slider-wrap {
+      max-width: 1100px; margin: 48px auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .reviews-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reviews-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 8px;
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 26px;
+      box-shadow: 0 4px 20px rgba(44,24,16,0.05);
+      border: 1px solid rgba(107,66,38,0.06);
+      transition: all 0.4s ease;
+      display: flex; flex-direction: column;
+      min-height: 280px;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(44,24,16,0.08);
+      border-color: rgba(201,169,110,0.25);
+    }
+    .review-card-header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(107,66,38,0.08);
+    }
+    .review-card-user {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .review-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+    }
+    .review-user-info { display: flex; flex-direction: column; }
+    .review-user-name {
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--brown-dark);
+    }
+    .review-platform {
+      font-size: 0.7rem; color: var(--brown-light);
+      letter-spacing: 0.5px;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    .review-card-body {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .review-card-footer {
+      margin-top: 16px;
+      font-size: 0.72rem;
+      color: var(--beige-dark);
+      letter-spacing: 0.3px;
+    }
+    .review-platform.naver .review-platform-tag {
+      background: #03C75A; color: #fff;
+    }
+    .review-platform-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      background: linear-gradient(135deg, #833AB4, #FD1D1D);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .review-platform-tag.naver {
+      background: #03C75A;
+    }
+    .reviews-dots {
+      display: flex; justify-content: center; gap: 10px;
+      margin-top: 36px;
+    }
+    .reviews-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(107,66,38,0.2); cursor: pointer;
+      transition: all 0.3s;
+    }
+    .reviews-dot.active {
+      background: var(--gold);
+      width: 28px; border-radius: 4px;
+    }
+    .reviews-nav {
+      display: flex; justify-content: center;
+      gap: 16px; margin-top: 20px;
+    }
+    .reviews-nav button {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid rgba(107,66,38,0.15);
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--brown-mid);
+      transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .reviews-nav button:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(201,169,110,0.3);
+    }
+
+    @media (max-width: 1024px) {
+      .balance-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .space-grid { grid-template-columns: 1fr; }
+      .reviews-slide { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .reviews-slide { grid-template-columns: 1fr; }
+      .space-card { aspect-ratio: 16/10; }
+    }
+
+    /* ===== ROI COMPARISON ===== */
+    .roi-section { overflow: hidden; }
+    .roi-header { text-align: center; margin-bottom: 56px; }
+    .roi-hero-number {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900; color: var(--gold);
+      margin: 24px 0 8px; line-height: 1.3;
+    }
+    .roi-hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: rgba(255,255,255,0.55); font-weight: 300;
+    }
+    .roi-chart {
+      max-width: 800px; margin: 0 auto 48px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .roi-bar-row {
+      display: grid; grid-template-columns: 140px 1fr 100px;
+      align-items: center; gap: 16px;
+    }
+    .roi-bar-label {
+      font-size: 0.92rem; color: rgba(255,255,255,0.6);
+      text-align: right; font-weight: 500;
+    }
+    .roi-bar-track {
+      height: 36px; background: rgba(255,255,255,0.04);
+      border-radius: 6px; overflow: hidden; position: relative;
+    }
+    .roi-bar-fill {
+      height: 100%; border-radius: 6px;
+      display: flex; align-items: center;
+      padding-left: 16px;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 0;
+    }
+    .roi-bar-fill.animated { /* width set inline */ }
+    .roi-bar-fill.gray {
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.14));
+    }
+    .roi-bar-fill.gold {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      box-shadow: 0 0 24px rgba(201,169,110,0.35), 0 0 48px rgba(201,169,110,0.15);
+    }
+    .roi-bar-amount {
+      font-family: var(--serif); font-size: 0.92rem;
+      font-weight: 700; color: rgba(255,255,255,0.7);
+      text-align: left; white-space: nowrap;
+    }
+    .roi-bar-row.highlight .roi-bar-label {
+      color: var(--gold); font-weight: 700;
+    }
+    .roi-bar-row.highlight .roi-bar-amount {
+      color: var(--gold); font-weight: 900; font-size: 1.05rem;
+    }
+    .roi-bar-row.highlight .roi-bar-fill.gold::after {
+      content: ''; position: absolute; inset: 0;
+      border-radius: 6px;
+      background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.2));
+      animation: barShimmer 2.5s ease-in-out infinite;
+    }
+    @keyframes barShimmer {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+    .roi-desc {
+      text-align: center; max-width: 600px; margin: 0 auto;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: rgba(255,255,255,0.55); line-height: 1.8;
+    }
+    .roi-desc strong { color: var(--gold); font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .roi-bar-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .roi-bar-label { text-align: left; font-size: 0.85rem; }
+      .roi-bar-amount { font-size: 0.85rem; }
+      .roi-bar-track { height: 30px; }
+    }
+
+    /* ===== FLOATING BAR ===== */
+    .floating-bar {
+      position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999;
+      background: rgba(44, 24, 16, 0.97);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(201,169,110,0.2);
+      padding: 12px 0;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .floating-bar.visible { transform: translateY(0); }
+    .floating-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .floating-text {
+      flex: 0 0 auto; font-family: var(--serif);
+      font-size: 0.95rem; color: var(--gold);
+      white-space: nowrap; font-weight: 600;
+    }
+    .floating-form { flex: 1; display: flex; gap: 10px; align-items: center; }
+    .floating-form input {
+      flex: 1; padding: 10px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 4px; color: #fff;
+      font-size: 0.88rem; outline: none; font-family: var(--sans);
+    }
+    .floating-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .floating-form input:focus { border-color: var(--gold); }
+    .floating-form button {
+      flex-shrink: 0; padding: 10px 28px;
+      background: var(--gold); color: var(--brown-dark);
+      border: none; border-radius: 4px; font-weight: 700;
+      font-size: 0.88rem; cursor: pointer;
+      font-family: var(--sans); transition: all 0.3s;
+    }
+    .floating-form button:hover { background: var(--gold-light); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #1a0e08; color: rgba(255,255,255,0.35);
+      padding: 48px 0 100px; font-size: 0.82rem;
+      line-height: 1.8; text-align: center;
+    }
+    .footer strong { color: var(--gold); font-weight: 600; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .revenue-grid { grid-template-columns: 1fr; }
+      .pie-chart-wrap { margin-bottom: 40px; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .system-grid { grid-template-columns: repeat(2, 1fr); }
+      .sides-grid { grid-template-columns: repeat(2, 1fr); }
+      .ceo-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; gap: 24px; }
+      .ba-arrow { transform: rotate(90deg); padding: 12px 0; }
+    }
+    @media (max-width: 768px) {
+      .gnb-menu { display: none; }
+      .gnb-cta { display: none; }
+      .gnb-toggle { display: flex; }
+      .gnb-menu.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 70px; left: 0; right: 0;
+        background: rgba(44,24,16,0.98); padding: 24px;
+        gap: 20px; border-bottom: 1px solid rgba(201,169,110,0.15);
+      }
+      .gnb-cta-mobile {
+        display: block; text-align: center;
+        background: var(--gold); color: var(--brown-dark);
+        padding: 12px; border-radius: 4px;
+        font-weight: 700; font-size: 0.9rem; margin-top: 8px;
+      }
+      .gnb-inner { height: 60px; }
+      .section { padding: 80px 0; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .system-grid { grid-template-columns: 1fr; }
+      .sides-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .pie-chart { width: 260px; height: 260px; }
+      .cost-table thead th { padding: 14px 12px; font-size: 0.8rem; }
+      .cost-table tbody td { padding: 14px 12px; font-size: 0.82rem; }
+      .floating-inner { flex-direction: column; gap: 8px; }
+      .floating-text { font-size: 0.85rem; }
+      .floating-form { width: 100%; }
+      .floating-form input { min-width: 0; }
+      .diag-box { padding: 32px 24px; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .review-images { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .cost-table-wrap { overflow-x: auto; }
+      .cost-table { min-width: 600px; }
+    }
+    /* REVIEW LIGHTBOX (POPUP) STYLES */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 24, 16, 0.85); /* 고명 브랜드 컬러를 섞은 어두운 배경 */
+      backdrop-filter: blur(8px); /* 배경 흐리기 효과 */
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000; /* GNB(1000)보다 위에 뜨도록 설정 */
+      display: none; /* 평소에는 숨김 */
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.visible {
+      display: flex; /* 보임 */
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 90vh; /* 화면 높이를 넘지 않도록 설정 */
+      object-fit: contain; /* 비율 유지하며 전체 보여주기 */
+      border-radius: 8px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+      border: 2px solid rgba(201,169,110,0.3); /* 골드 테두리 미세하게 추가 */
+    }
+
+    /* 닫기 버튼 (X) - 우측 상단 */
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: -10px;
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 300;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+      line-height: 1;
+      z-index: 2010;
+    }
+    .lightbox-close:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    /* 이전/다음 버튼 (<, >) - 좌우 중단 */
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 3.5rem;
+      font-weight: 300;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+      user-select: none;
+      z-index: 2010;
+      padding: 20px; /* 클릭 영역 확대 */
+    }
+    .lightbox-prev { left: -60px; }
+    .lightbox-next { right: -60px; }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      color: var(--gold);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      .lightbox-overlay { padding: 20px; }
+      .lightbox-close { top: -35px; right: 0; font-size: 2.5rem; }
+      .lightbox-prev { left: -30px; font-size: 2.5rem; }
+      .lightbox-next { right: -30px; font-size: 2.5rem; }
+    }
+        /* ===== SYSTEM 로드맵 다이어그램 CSS ===== */
+    .system-roadmap {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 80px;
+      gap: 20px;
+    }
+
+    /* 연결선 배경 */
+    .system-roadmap::before {
+      content: '';
+      position: absolute;
+      top: 35px; /* 노드 중앙 높이 */
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: rgba(201, 169, 110, 0.2);
+      z-index: 0;
+    }
+
+    .roadmap-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 숫자 노드 (원형) */
+    .roadmap-node {
+      width: 70px;
+      height: 70px;
+      background: var(--brown-dark);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .roadmap-item:hover .roadmap-node {
+      background: var(--gold);
+      color: var(--brown-dark);
+      transform: scale(1.1);
+    }
+
+    .roadmap-content h4 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .roadmap-content p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+    }
+
+    /* 모바일 대응: 세로 흐름으로 변경 */
+    @media (max-width: 768px) {
+      .system-roadmap {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 30px;
+      }
+      .system-roadmap::before {
+        top: 0; bottom: 0; left: 65px;
+        width: 2px; height: 100%;
+      }
+      .roadmap-item {
+        flex-direction: row;
+        gap: 30px;
+        margin-bottom: 40px;
+        text-align: left;
+        align-items: flex-start;
+      }
+      .roadmap-node {
+        width: 50px; height: 50px; flex-shrink: 0;
+      }
+    }
+    /* ===== 리뷰 캡처 카드 전용 스타일 ===== */
+    .review-card-img-type {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(107,66,38,0.08);
+      position: relative;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-card-img-type:hover {
+      transform: translateY(-8px);
+    }
+    .platform-badge.naver {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      background: #03C75A;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      z-index: 10;
+    }
+    .review-capture-box {
+      width: 100%;
+      /* 네이버 리뷰 캡처의 긴 비율을 고려한 설정 */
+      aspect-ratio: 4 / 5; 
+      overflow: hidden;
+      background: #fff;
+    }
+    .review-capture-box img {
+      width: 100%;
+      height: 100%;
+      /* 이미지 전체가 잘 보일 수 있도록 설정 */
+      object-fit: contain; 
+      object-position: top;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== GNB ===== -->
+  <nav class="gnb" id="gnb">
+    <div class="gnb-inner">
+      <a href="#hero" class="gnb-logo">
+        <img src="images/logo.png" alt="고명" onerror="this.style.display='none'; document.getElementById('logoText').style.display='block';" />
+        <span class="gnb-logo-text" id="logoText" style="display:none;">고명</span>
+      </a>
+      <ul class="gnb-menu" id="gnbMenu">
+        <li><a href="#problem">브랜드 소개</a></li>
+        <li><a href="#menu">메뉴</a></li>
+        <li><a href="#revenue">수익 구조</a></li>
+        <li><a href="#system">가맹 시스템</a></li>
+        <li><a href="#cost">창업 비용</a></li>
+        <li><a href="#contact">상담 신청</a></li>
+      </ul>
+      <a href="#contact" class="gnb-cta">가맹 상담 신청</a>
+      <div class="gnb-toggle" id="gnbToggle" onclick="document.getElementById('gnbMenu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== 0. HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline poster="">
+        <source src="video/gomyung-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-main-logo">
+        <img src="images/logo.png" alt="고명 로고">
+      </div>
+      <h1>
+        여러분의 저녁에 저희 <span class="highlight">고명</span>을 얹어<br />
+        편안함을 더해드리겠습니다.
+      </h1>
+      <p class="hero-bottom-line">
+        공간에 맛을 채워,<br />
+        <strong>'잘되게 만들어진 매장'</strong>을 만듭니다.
+      </p>
+    </div>
+    <div class="hero-scroll-indicator">
+      SCROLL
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== 2. SOLUTION ===== -->
+  <section class="section section-cream" id="solution">
+    <div class="container text-center">
+      <div class="reveal">
+        <span class="section-tag">SOLUTION</span>
+        <h2 class="section-title" style="color:var(--brown-dark)"><span style="color:var(--gold)">고명</span>은 다릅니다.</h2>
+        <p class="section-desc" style="margin:0 auto;">한 끼를 완성하는 브랜드라는 기준으로<br />매장을 설계합니다.</p>
+      </div>
+      <div class="solution-box reveal">
+        <h3>
+            공간, 메뉴, 운영까지<br />
+            <span class="accent" style="display: inline-block; font-size: 1.8em; font-weight: 900; line-height: 1.2; margin: 10px 0;">처음부터</span><br />
+            <span class="accent">매출이 나게 설계합니다.</span>
+          </h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== A. BALANCE (워라밸) ===== -->
+  <section class="section balance-section" id="balance">
+    <div class="container">
+      <div class="balance-header reveal">
+        <span class="section-tag">WORK & LIFE BALANCE</span>
+        <h2 class="section-title">
+          일과 삶의 균형을 추구하는<br />
+          <span>선택과 집중이 가능한 브랜드</span>
+        </h2>
+      </div>
+      <div class="balance-grid">
+        <div class="balance-card reveal delay-1">
+          <span class="balance-card-num">01</span>
+          <div class="balance-card-img-wrap">
+            <img src="images/bal-img1.jpg" alt="고명의 프리미엄 저녁 식탁" class="balance-card-img" />
+          </div>
+          <h4>짧은 운영시간</h4>
+          <p>저녁 시간(17:00~23:00)만<br />운영해도 충분한 수익이 가능한<br />효율적인 매출 구조입니다.</p>
+        </div>
+
+        <div class="balance-card reveal delay-2">
+          <span class="balance-card-num">02</span>
+          <div class="balance-card-img-wrap">
+            <img src="images/bal-img2.jpg" alt="낮 시간의 여유와 휴식" class="balance-card-img" />
+          </div>
+          <h4>균형 잡힌 라이프</h4>
+          <p>낮 시간은 온전히 나를 위해<br />가족, 여가, 휴식과<br />병행할 수 있습니다.</p>
+        </div>
+
+        <div class="balance-card reveal delay-3">
+          <span class="balance-card-num">03</span>
+          <div class="balance-card-img-wrap">
+            <img src="images/bal-img3.jpg" alt="고객이 증명하는 고명의 맛" class="balance-card-img" />
+          </div>
+          <h4>안정적인 수익 구조</h4>
+          <p>매일 반복되는 고정 수요와<br />높은 재방문율로<br />브랜드 매출 지속성을 확보합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== B. SPACE CONCEPT (지점 인테리어) ===== -->
+  <section class="section space-section" id="space">
+    <div class="container">
+      <div class="space-header reveal">
+        <span class="section-tag">SPACE CONCEPT</span>
+        <h2 class="section-title">고명의 <span style="color:var(--gold)">공간</span>은<br />브랜드 그 자체입니다.</h2>
+        <p class="section-desc" style="margin: 16px auto 0;">
+          모던 빈티지 컨셉으로 설계된 고명의 지점들.<br />
+          공간이 곧 매출의 시작입니다.
+        </p>
+      </div>
+      <div class="space-grid">
+        <div class="space-card reveal reveal-left yulha-slider">
+          <img src="images/yulha1.jpeg" alt="고명 율하점 1" class="slide active" />
+          <img src="images/yulha2.jpeg" alt="고명 율하점 2" class="slide" />
+          <img src="images/yulha3.jpeg" alt="고명 율하점 3" class="slide" />
+          <img src="images/yulha4.jpeg" alt="고명 율하점 4" class="slide" />
+          <img src="images/yulha5.jpeg" alt="고명 율하점 5" class="slide" />
+          <img src="images/yulha6.jpeg" alt="고명 율하점 6" class="slide" />
+          
+          <div class="space-card-overlay">
+            <div class="space-card-label">BRANCH 01</div>
+            <div class="space-card-name">율하점</div>
+          </div>
+        </div>
+        <div class="space-card reveal reveal-right jaeun-slider">
+          <img src="images/jaeun1.jpeg" alt="고명 자은점 1" class="slide active" />
+          <img src="images/jaeun2.jpeg" alt="고명 자은점 2" class="slide" />
+          <img src="images/jaeun3.jpeg" alt="고명 자은점 3" class="slide" />
+          <img src="images/jaeun4.jpeg" alt="고명 자은점 4" class="slide" />
+          
+          <div class="space-card-overlay">
+            <div class="space-card-label">BRANCH 02</div>
+            <div class="space-card-name">자은점</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. REVIEWS (Replaces DIFFERENTIATORS) ===== -->
+  <section class="section reviews-section" id="reviews">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="section-tag">CUSTOMER REVIEWS</span>
+        <h2 class="section-title" style="color:var(--brown-dark)">실제 방문 후기,<br />고객이 <span style="color:var(--gold)">증명</span>합니다.</h2>
+        <div class="reviews-key-copy">
+          고객 재방문율 <strong>80%</strong> · 고객 만족도 <strong>100%</strong>
+        </div>
+      </div>
+
+      <div class="reviews-slider-wrap reveal">
+        <div class="reviews-track" id="reviewsTrack">
+          
+          <div class="reviews-slide">
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap1.jpg" alt="네이버 리뷰 1" onerror="this.src='https://via.placeholder.com/400x600?text=Review+1'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap2.jpg" alt="네이버 리뷰 2" onerror="this.src='https://via.placeholder.com/400x600?text=Review+2'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap3.jpg" alt="네이버 리뷰 3" onerror="this.src='https://via.placeholder.com/400x600?text=Review+3'">
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-slide">
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap4.jpg" alt="네이버 리뷰 4" onerror="this.src='https://via.placeholder.com/400x600?text=Review+4'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap5.jpg" alt="네이버 리뷰 5" onerror="this.src='https://via.placeholder.com/400x600?text=Review+5'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap6.jpg" alt="네이버 리뷰 6" onerror="this.src='https://via.placeholder.com/400x600?text=Review+6'">
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-slide">
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap7.jpg" alt="네이버 리뷰 7" onerror="this.src='https://via.placeholder.com/400x600?text=Review+7'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap8.jpg" alt="네이버 리뷰 8" onerror="this.src='https://via.placeholder.com/400x600?text=Review+8'">
+              </div>
+            </div>
+            <div class="review-card-img-type">
+              <div class="platform-badge naver">NAVER</div>
+              <div class="review-capture-box">
+                <img src="images/review_cap9.jpg" alt="네이버 리뷰 9" onerror="this.src='https://via.placeholder.com/400x600?text=Review+9'">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="reviews-dots" id="reviewsDots">
+          <div class="reviews-dot active" data-index="0"></div>
+          <div class="reviews-dot" data-index="1"></div>
+          <div class="reviews-dot" data-index="2"></div>
+        </div>
+        
+        <div class="reviews-nav">
+          <button onclick="reviewsPrev()">&#x2190;</button>
+          <button onclick="reviewsNext()">&#x2192;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section class="section menu-section" id="menu">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">MENU</span>
+        <h2 class="section-title">한 끼를 완성하는<br /><span style="color:var(--gold)">고명의 메뉴</span></h2>
+        <p class="section-desc" style="margin:0 auto; color:rgba(255,255,255,0.6);">숙성돼지고기 전문점 고명의<br />시그니처 메뉴를 소개합니다.</p>
+      </div>
+
+      <!-- Carousel -->
+      <div class="menu-carousel-wrap reveal">
+        <div class="menu-carousel-track" id="carouselTrack">
+          <div class="menu-slide">
+            <img src="images/menu-samgyeop.jpeg" alt="숙성 삼겹살" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">숙성 삼겹살</span>
+            <div class="menu-slide-label">숙성 삼겹살</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-moksal.jpeg" alt="숙성 목살" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">숙성 목살</span>
+            <div class="menu-slide-label">숙성 목살</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-hangjeong.jpeg" alt="숙성 항정살" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">숙성 항정살</span>
+            <div class="menu-slide-label">숙성 항정살</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-mokkeutsal.jpeg" alt="숙성 목끝살" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">숙성 목끝살</span>
+            <div class="menu-slide-label">숙성 목끝살</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-coupleset.jpeg" alt="커플 세트" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">커플 세트</span>
+            <div class="menu-slide-label">커플 세트</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-specialset.jpeg" alt="특수부위 세트" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">특수부위 세트</span>
+            <div class="menu-slide-label">특수부위 세트</div>
+          </div>
+          <div class="menu-slide">
+            <img src="images/menu-familyset.jpeg" alt="가족 세트" onerror="this.style.display='none'; this.parentElement.querySelector('.menu-slide-placeholder').style.display='block';" />
+            <span class="menu-slide-placeholder" style="display:none;">가족 세트</span>
+            <div class="menu-slide-label">가족 세트</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots">
+        <div class="carousel-dot active" data-index="0"></div>
+        <div class="carousel-dot" data-index="1"></div>
+        <div class="carousel-dot" data-index="2"></div>
+        <div class="carousel-dot" data-index="3"></div>
+        <div class="carousel-dot" data-index="4"></div>
+        <div class="carousel-dot" data-index="5"></div>
+        <div class="carousel-dot" data-index="6"></div>
+      </div>
+
+      <!-- Side dishes -->
+      <div class="side-dishes reveal">
+        <h3>고명만의 특별한 소스와<br /><span>시그니처 디저트</span></h3>
+        <div class="sides-grid">
+          <div class="side-item reveal delay-1">
+            <div class="side-item-img" onclick="openSauceModal()" style="cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              <img src="images/sauce-set.jpeg" alt="고명 특제 소스 세트 - 말돈소금, 와사비, 특제 젓갈 등" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">소스 이미지</span>
+            </div>
+            <h5>각종 소스</h5>
+            <p>말돈소금, 와사비, 특제 젓갈 등<br />고기 맛을 극대화하는 소스 구성</p>
+          </div>
+          <div class="side-item reveal delay-2">
+            <div class="side-item-img">
+              <img src="images/tomato-dessert.jpeg" alt="토마토 디저트" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">토마토 이미지</span>
+            </div>
+            <h5>마리네이드 토마토</h5>
+            <p>시그니처 디저트<br />식사 후 입안을 깔끔하게</p>
+          </div>
+          <div class="side-item reveal delay-3">
+            <div class="side-item-img">
+              <img src="images/hwanghachi-dessert.jpeg" alt="황하치 디저트" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">황하치 이미지</span>
+            </div>
+            <h5>황하치</h5>
+            <p>시그니처 디저트<br />고명만의 특별한 마무리</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:80px;">고기와 함께 즐기는<br /><span>식사 & 사이드 메뉴</span></h3>
+        <div class="sides-grid">
+          <div class="side-item reveal delay-1">
+            <div class="side-item-img">
+              <img src="images/menu-toomba.jpeg" alt="투움바라면" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">투움바라면</span>
+            </div>
+            <h5>투움바라면</h5>
+            <p>크리미한 로제 베이스의<br />고명 시그니처 라면</p>
+          </div>
+          <div class="side-item reveal delay-2">
+            <div class="side-item-img">
+              <img src="images/menu-doenjang.jpeg" alt="푸짐 해물 된장찌개" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">푸짐 해물 된장찌개</span>
+            </div>
+            <h5>푸짐 해물 된장찌개</h5>
+            <p>해물이 가득 들어간<br />속이 든든한 한 그릇</p>
+          </div>
+          <div class="side-item reveal delay-3">
+            <div class="side-item-img">
+              <img src="images/menu-kimchi.jpeg" alt="숙성돼지고기 김치찌개" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">숙성돼지고기 김치찌개</span>
+            </div>
+            <h5>숙성돼지고기 김치찌개</h5>
+            <p>숙성 돼지고기로 끓여낸<br />깊고 진한 김치찌개</p>
+          </div>
+          <div class="side-item reveal delay-1">
+            <div class="side-item-img">
+              <img src="images/menu-myeongran.jpeg" alt="고명 명란밥" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">고명 명란밥</span>
+            </div>
+            <h5>고명 명란밥</h5>
+            <p>짭조름한 명란이 어우러진<br />고명만의 시그니처 밥</p>
+          </div>
+          <div class="side-item reveal delay-2">
+            <div class="side-item-img">
+              <img src="images/menu-naengramen.jpeg" alt="쯔유 냉라멘" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">쯔유 냉라멘</span>
+            </div>
+            <h5>쯔유 냉라멘</h5>
+            <p>시원한 쯔유 베이스의<br />깔끔한 일본식 냉라멘</p>
+          </div>
+          <div class="side-item reveal delay-3">
+            <div class="side-item-img">
+              <img src="images/menu-gyeran.jpeg" alt="폭탄 계란찜" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">폭탄 계란찜</span>
+            </div>
+            <h5>폭탄 계란찜</h5>
+            <p>부드럽게 부풀어 오른<br />보들보들 폭탄 계란찜</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. REVENUE ===== -->
+  <section class="section section-dark" id="revenue">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">REVENUE</span>
+        <h2 class="section-title">외식업은 감성이 아니라<br /><span style="color:var(--gold)">숫자</span>입니다.</h2>
+      </div>
+      <div class="revenue-grid">
+        <div class="pie-chart-wrap reveal reveal-left">
+          <div class="pie-chart" id="pieChart">
+            <svg viewBox="0 0 240 240" width="100%" height="100%">
+              <circle cx="120" cy="120" r="80" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="40" />
+            </svg>
+            <div class="pie-chart-center">
+              <div class="amount">4,000<span style="font-size:0.5em">만원</span></div>
+              <div class="label">월 매출 평균</div>
+            </div>
+          </div>
+          <div class="pie-legend" id="pieLegend"></div>
+        </div>
+        <div class="revenue-text reveal reveal-right">
+          <h3>고명은 단순히 맛있는 집이 아니라<br /><span>수익이 나게 만들어진 구조</span>입니다.</h3>
+          <div class="revenue-highlight-box">
+            <div class="hl-top-text">주 1회 휴무<br />하루 5시간 운영</div>
+            
+            <div class="hl-number">월 매출 평균<br />4,000만원</div>
+            
+            <div class="hl-label" style="margin-bottom: 0;">현재 운영 매장 기준 실제 수익 데이터</div>
+          </div>
+          <p class="revenue-bottom">같은 시간, 같은 공간에서<br /><strong style="color:var(--gold)">더 많은 수익이 나는 이유</strong>는 설계에 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. PROVEN DESIGNER (CEO) ===== -->
+  <section class="section section-cream ceo-section" id="ceo">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">PROVEN</span>
+        <h2 class="section-title" style="color:var(--brown-dark)">이론이 아닌,<br /><span style="color:var(--gold)">결과를 만든 사람이</span><br />설계했습니다.</h2>
+      </div>
+      <div class="ceo-grid">
+        <div class="reveal reveal-left">
+          <div class="ceo-images">
+            <div class="ceo-img-item">
+              <img src="images/ceo-lecture.jpg" alt="대표 강의 사진" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">대표 강의 사진</span>
+            </div>
+            <div class="ceo-img-item">
+              <img src="images/award-trophy.jpg" alt="브랜드 대상 수상" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <span class="placeholder-text" style="display:none;">브랜드 대상 수상</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-right">
+          <ul class="ceo-track-list">
+            <li>수제버거 & 카페 프랜차이즈 <strong style="color:var(--brown-dark)">80개 매장</strong> 운영 경험</li>
+            <li>외식업 개인 브랜드 <strong style="color:var(--brown-dark)">13개 이상</strong> 오픈 및 운영</li>
+            <li>업종 변경 매장 전 지점 월 매출 <strong style="color:var(--gold)">최소 5배 상승</strong></li>
+            <li>창원시 주최 초보 창업자 대상 <strong style="color:var(--brown-dark)">창업 강의</strong> 진행</li>
+            <li><strong style="color:var(--brown-dark)">브랜드 대상</strong> 수상 경력</li>
+          </ul>
+
+          <div class="ceo-key-highlight">
+            <h4>고명 프랜차이즈 본사<br />+ 인테리어 회사 동시 운영</h4>
+            <p>마진 없는 원가 인테리어 시공으로<br /><strong style="color:var(--gold); font-size:1.1rem;">소자본 창업이 가능합니다.</strong></p>
+          </div>
+
+          <p class="ceo-closing-quote">
+            "대표가 직접 1:1로<br />잘되는 장사 과외를 시켜드리겠습니다."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. BEFORE & AFTER ===== -->
+  <section class="section section-dark ba-section" id="beforeafter">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">TRANSFORMATION</span>
+        <h2 class="section-title">매출의 <span style="color:var(--gold)">변화</span></h2>
+      </div>
+      <div class="ba-grid reveal">
+        <div class="ba-card before">
+          <div class="ba-card-img">
+            <img src="images/receipt1.jpg" alt="기존 매장 영수증" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="placeholder-text" style="display:none;">기존 매장 영수증</span>
+          </div>
+          <div class="ba-label">BEFORE</div>
+          <div class="ba-amount">일매출 8만원</div>
+          <p class="ba-desc">기존 매장의 하루 매출</p>
+        </div>
+        <div class="ba-arrow">&#x27A1;</div>
+        <div class="ba-card after">
+          <div class="ba-card-img">
+            <img src="images/restaurant1.jpg" alt="고명 매장 줄서기" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="placeholder-text" style="display:none;">고명 매장 줄서기</span>
+          </div>
+          <div class="ba-label">AFTER</div>
+          <div class="ba-amount">일매출 280만원</div>
+          <p class="ba-desc">고명으로 전환 후 하루 매출</p>
+        </div>
+      </div>
+      <div class="ba-bottom-text reveal">
+        <strong>5시간 운영, 테이블 10개</strong>가 만든 결과.<br />
+        운이 아니라 <strong>구조를 바꾼 결과</strong>입니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. DIAGNOSIS TEST ===== -->
+  <section class="section section-beige diag-section" id="diagnosis">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">DIAGNOSIS</span>
+        <h2 class="section-title" style="color:var(--brown-dark)">업종 변경 매장 진단 테스트<br /><span style="color:var(--gold)">내 매장은 왜 안 될까?</span></h2>
+      </div>
+      <div class="diag-box reveal">
+        <div class="diag-counter">체크 개수: <span id="diagCount">0</span>개</div>
+        <div class="diag-checklist" id="diagChecklist">
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">우리 매장은 메뉴가 많고 주문이 어렵다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">피크 시간에도 회전이 느리다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">객단가가 낮다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">재방문 고객이 적다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">인건비 부담이 크다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">매출이 들쭉날쭉하다.</span>
+          </div>
+          <div class="diag-item" onclick="toggleDiag(this)">
+            <div class="diag-checkbox"></div>
+            <span class="diag-item-text">요즘 손님이 줄고 있다.</span>
+          </div>
+        </div>
+        <div class="diag-results">
+          <h4>진단 결과</h4>
+          <div class="diag-result-item">
+            <span class="diag-result-badge safe">2개 이하</span>
+            <span>현재 구조 유지 가능</span>
+          </div>
+          <div class="diag-result-item">
+            <span class="diag-result-badge warning">3~4개</span>
+            <span>빠른 구조 개선 필요</span>
+          </div>
+          <div class="diag-result-item">
+            <span class="diag-result-badge danger">5개 이상</span>
+            <span>업종 변경 구조 재설계 권장</span>
+          </div>
+        </div>
+        <p class="diag-warning" id="diagWarning" style="display:none;">지금 상태로 버티는 게 더 위험할 수 있습니다.</p>
+        <a href="#contact" class="diag-cta">무료 매장 진단 + 솔루션 받기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. FRANCHISE SYSTEM ===== -->
+  <section class="section section-dark system-section-wrap" id="system">
+  <div class="system-bg-img">
+    <img src="images/system-bg.jpg" alt="" onerror="this.parentElement.style.display='none';" />
+  </div>
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">SYSTEM</span>
+      <h2 class="section-title">전문가의 시스템으로<br /><span style="color:var(--gold)">완성된 성공 프로세스</span></h2>
+      <p class="section-desc" style="margin:0 auto;">본사가 이끄는 대로만 따라오십시오. 성공은 시스템이 만듭니다.</p>
+    </div>
+
+    <div class="system-roadmap reveal">
+      <div class="roadmap-item">
+        <div class="roadmap-node">01</div>
+        <div class="roadmap-content">
+          <h4>오퍼레이션 매뉴얼</h4>
+          <p>오픈 전부터 운영까지 모든 과정이<br />표준화된 매뉴얼로 제공됩니다.</p>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-node">02</div>
+        <div class="roadmap-content">
+          <h4>교육 시스템</h4>
+          <p>경험 없이도 가능한 체계적인 교육.<br />조리부터 서비스까지 완벽 지원.</p>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-node">03</div>
+        <div class="roadmap-content">
+          <h4>오픈 지원</h4>
+          <p>상권 분석, 인테리어, 오픈 마케팅까지.<br />매장 오픈의 모든 과정을 함께합니다.</p>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-node">04</div>
+        <div class="roadmap-content">
+          <h4>마케팅 지원</h4>
+          <p>본사 차원의 브랜드 마케팅과<br />지역 맞춤 마케팅을 지속 지원합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== 9. COST ===== -->
+  <section class="section section-beige" id="cost">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">COST</span>
+        <h2 class="section-title" style="color:var(--brown-dark)">창업 비용 안내</h2>
+        <p class="section-desc" style="margin:0 auto;">투명하게 공개합니다. 숨겨진 비용은 없습니다.</p>
+      </div>
+      <div class="cost-table-wrap reveal">
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>신규 창업 (20평 기준)</th>
+              <th>업종 변경</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="item-name">가맹비</td>
+              <td class="cost-val"><span class="original-price">500만원</span>100만원 <span class="badge-discount">80% 할인</span></td>
+              <td class="cost-val">100만원</td>
+            </tr>
+            <tr>
+              <td class="item-name">로열티</td>
+              <td class="cost-val">매출의 1%</td>
+              <td class="cost-val">매출의 1%</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="cost-note" style="text-align:center; padding:8px 20px; font-size:0.82rem; color:var(--gold); background:rgba(201,169,110,0.06);">
+                * 로열티는 무조건 점주님들의 마케팅 비용으로 사용됩니다.
+              </td>
+            </tr>
+            <tr>
+              <td class="item-name">교육비</td>
+              <td class="cost-val">300만원</td>
+              <td class="cost-val">300만원</td>
+            </tr>
+            <tr>
+              <td class="item-name">집기 비용</td>
+              <td class="cost-val">1,500만원</td>
+              <td class="cost-val" style="color:var(--gold); font-size:1.15rem;">0원 <span class="badge-free">면제</span></td>
+            </tr>
+            <tr>
+              <td class="item-name">인테리어</td>
+              <td class="cost-val">평당 140만원<br /><span class="cost-note">(20평 기준 약 2,800만원)</span></td>
+              <td class="cost-val" style="color:var(--gold); font-size:1.15rem;">0원 <span class="badge-free">면제</span></td>
+            </tr>
+            <tr>
+              <td class="item-name">테이블</td>
+              <td class="cost-val">300만원</td>
+              <td class="cost-val" style="color:var(--gold); font-size:1.15rem;">0원 <span class="badge-free">면제</span></td>
+            </tr>
+            <tr>
+              <td class="item-name">간판 및 사인물</td>
+              <td class="cost-val">400만원</td>
+              <td class="cost-val">300만원</td>
+            </tr>
+            <tr class="total-row">
+              <td>합계</td>
+              <td class="total-highlight">약 4,700만원</td>
+              <td class="total-remodel">700만원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cost-note-box reveal">
+        * 로열티(매출 1%)는 별도이며,<br />전액 점주님 매장 마케팅 비용으로 사용됩니다.<br />
+       <br /> * 업종 변경 시 기존 집기, 인테리어, 테이블 활용으로<br />초기 비용이 대폭 절감됩니다.
+      </div>
+
+      <div class="remodel-banner reveal">
+        <h3>업종 변경이라면</h3>
+        <div class="price">700만원</div>
+        <p>기존 매장을 활용하여<br />집기, 인테리어, 테이블 비용 0원.<br />최소 비용으로<br />검증된 브랜드를 시작하세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROI COMPARISON ===== -->
+  <section class="section section-dark roi-section" id="roi">
+    <div class="container">
+      <div class="roi-header reveal">
+        <span class="section-tag">ROI</span>
+        <h2 class="section-title">창업 비용,<br />언제 다 <span style="color:var(--gold)">회수</span>할 수 있을까요?</h2>
+        <div class="roi-hero-number">월 매출 = 창업 비용<br />고명 평균 회수 기간 2개월</div>
+        <p class="roi-hero-sub">고명은 빠른 투자금 회수가 가능한 구조입니다.</p>
+      </div>
+      <div class="roi-chart reveal" id="roiChart">
+        <div class="roi-bar-row">
+          <span class="roi-bar-label">Brand A</span>
+          <div class="roi-bar-track">
+            <div class="roi-bar-fill gray" data-width="100%"></div>
+          </div>
+          <span class="roi-bar-amount">1억 3천만원</span>
+        </div>
+        <div class="roi-bar-row">
+          <span class="roi-bar-label">Brand B</span>
+          <div class="roi-bar-track">
+            <div class="roi-bar-fill gray" data-width="77%"></div>
+          </div>
+          <span class="roi-bar-amount">1억원</span>
+        </div>
+        <div class="roi-bar-row">
+          <span class="roi-bar-label">Brand C</span>
+          <div class="roi-bar-track">
+            <div class="roi-bar-fill gray" data-width="69%"></div>
+          </div>
+          <span class="roi-bar-amount">9천만원</span>
+        </div>
+        <div class="roi-bar-row highlight">
+          <span class="roi-bar-label">고명 (업종변경)</span>
+          <div class="roi-bar-track">
+            <div class="roi-bar-fill gold" data-width="5.4%"></div>
+          </div>
+          <span class="roi-bar-amount">700만원</span>
+        </div>
+      </div>
+      <p class="roi-desc reveal">
+        타 프랜차이즈 대비 개설 비용 <strong>최대 70% 감소.</strong><br />
+        낮은 초기 투자금이 <strong>압도적인 회수 속도</strong>를 만듭니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 10. CLOSING ===== -->
+  <section class="closing-section" id="closing">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-tag" style="color:var(--brown-mid)">DECISION</span>
+        <h2 class="section-title" style="color:var(--brown-dark)">결국 중요한 건<br /><span style="color:var(--gold)">선택</span>입니다.</h2>
+        <p class="closing-desc">
+          이미 잘 되는 브랜드를 할 것인가,<br />
+          직접 시행착오를 겪을 것인가.<br /><br />
+          <strong style="color:var(--brown-dark)">고명은 이미 검증된 구조입니다.</strong><br />
+          이제 그 구조를 가져가시면 됩니다.
+        </p>
+        <a href="#contact" class="closing-cta-btn">가맹 상담 신청하기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11. DB FORM ===== -->
+  <section class="form-section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="form-10-highlight">가맹 10호점까지 드리는<br />혜택을 받아보세요!</div>
+        <h2 class="form-title">
+          <span class="bold">성공적인</span><br />
+          소자본창업<br />
+          <span class="bold">업종변경 문의</span>
+        </h2>
+        <p class="form-benefits">
+          지금 상담 신청하시면<br /><strong style="color:var(--gold)">상권 분석, 예상 매출 구조 시스템, 창업 비용 설계</strong><br />전부 무료 제공입니다.
+        </p>
+        <p class="form-subtitle" style="margin-bottom:8px;">선착순으로 입점 지역 보호합니다.</p>
+      </div>
+
+      <form class="reveal" action="https://formspree.io/f/xlgopzwl" method="POST" id="mainForm">
+        <div class="form-grid">
+          <input type="text" name="name" class="form-input" placeholder="이름" required />
+          <input type="tel" name="phone" class="form-input" placeholder="연락처" required />
+          <select name="type" class="form-input select">
+            <option value="" disabled selected>창업 유형 선택</option>
+            <option value="신규창업">신규 창업</option>
+            <option value="업종변경">업종 변경</option>
+            <option value="기타">기타 문의</option>
+          </select>
+          <input type="text" name="region" class="form-input" placeholder="희망 지역" />
+          <textarea name="message" class="form-input full" rows="3" placeholder="문의 사항 (선택)"></textarea>
+        </div>
+        <div class="form-phone-display">
+          가맹 문의: <a href="tel:1661-1422">1661-1422</a>
+        </div>
+        <button type="submit" class="form-submit">가맹 상담 신청하기</button>
+        <p class="form-notice">* 입력하신 정보는 가맹 상담 목적으로만 사용되며,<br />개인정보처리방침에 따라 안전하게 관리됩니다.</p>
+      </form>
+
+      <p class="form-bottom-line reveal">
+        잘되는 식당은 이유가 있습니다.<br />
+        <strong>고명은 그 이유를 설계합니다.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>고명</strong> 숙성돼지고기 전문점</p>
+      <p>대표: 황영선 | 사업자등록번호: 205-11-57161</p>
+      <p>주소: 창원시 진해구 풍호로 49번길 5-12 401호</p>
+      <p>가맹본부(오피스): 경남 창원시 의창구 평산로 33 신화더플렉스시티 1007호</p>
+      <p>가맹 문의: <strong>1661-1422</strong> | 이메일: bbqgm0@naver.com</p>
+      <p style="margin-top:12px;">&copy; 2026 고명. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING BAR ===== -->
+  <div class="floating-bar" id="floatingBar">
+    <div class="floating-inner">
+      <span class="floating-text">가맹 상담 신청</span>
+      <form class="floating-form" action="https://formspree.io/f/xlgopzwl" method="POST">
+        <input type="text" name="name" placeholder="이름" required />
+        <input type="tel" name="phone" placeholder="연락처" required />
+        <button type="submit">신청하기</button>
+      </form>
+    </div>
+  </div>
+  <div class="lightbox-overlay" id="reviewLightbox">
+    <div class="lightbox-content">
+      <span class="lightbox-close" id="lightboxClose">&times;</span>
+      <img src="" alt="리뷰 확대 이미지" class="lightbox-img" id="lightboxImg">
+      <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+      <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+    </div>
+  </div> <div class="lightbox-overlay" id="setMenuModal">
+    <div class="lightbox-content" style="flex-direction: column;">
+      <span class="lightbox-close" onclick="closeSetMenuModal()">&times;</span>
+      <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+        <img src="" alt="세트 메뉴 상세 이미지" class="lightbox-img" id="setMenuModalImg">
+        <span class="lightbox-prev" onclick="changeSetMenuSlide(-1)">&#10094;</span>
+        <span class="lightbox-next" onclick="changeSetMenuSlide(1)">&#10095;</span>
+        <div class="set-menu-caption" id="setMenuModalName"></div>
+      </div>
+    </div>
+  </div>
+  <div class="lightbox-overlay" id="sauceModal">
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeSauceModal()">&times;</span>
+      <img src="images/sauce-set.jpeg" alt="고명 특제 소스 세트 상세 이미지" class="lightbox-img">
+    </div>
+  </div>
+  </div>
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== GNB Scroll =====
+    const gnb = document.getElementById('gnb');
+    window.addEventListener('scroll', () => {
+      gnb.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== Scroll Reveal =====
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== Menu Carousel =====
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let currentSlide = 0;
+    const totalSlides = 7;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
+    });
+    setInterval(() => { goToSlide((currentSlide + 1) % totalSlides); }, 2500);
+
+    let touchStartX = 0;
+    const carouselWrap = document.querySelector('.menu-carousel-wrap');
+    carouselWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+    carouselWrap.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goToSlide((currentSlide + 1) % totalSlides);
+        else goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+      }
+    });
+    // ===== 인테리어 3D 자동 슬라이드 =====
+    const interiorSlides = document.querySelectorAll('.interior-slider .slide');
+    if(interiorSlides.length > 0) {
+      let currentInteriorSlide = 0;
+  
+      setInterval(() => {
+        // 현재 이미지 숨기기
+        interiorSlides[currentInteriorSlide].classList.remove('active');
+    
+        // 다음 이미지로 넘어가기 (마지막 이미지면 다시 처음으로)
+        currentInteriorSlide = (currentInteriorSlide + 1) % interiorSlides.length;
+    
+        // 다음 이미지 보여주기
+        interiorSlides[currentInteriorSlide].classList.add('active');
+      }, 2000); // 2000ms = 2초
+    }
+    // ===== 리뷰 자동 슬라이드 삭제 및 수동 Gomyung Lightbox 구현 =====
+    const reviewSlides = document.querySelectorAll('.review-slider .slide');
+    const lbOverlay = document.getElementById('reviewLightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbClose = document.getElementById('lightboxClose');
+    const lbPrev = document.getElementById('lightboxPrev');
+    const lbNext = document.getElementById('lightboxNext');
+    let currentReviewIndex = 0;
+
+    if(reviewSlides.length > 0) {
+      // 1. 자동 슬라이드 기능 삭제: setInterval 코드를 아예 작성하지 않습니다.
+
+      // 2. 초기화: 첫 번째 이미지만 보이게 설정 (CSS 클래스로 제어하므로 JS는 주석 처리 가능)
+      // reviewSlides[0].classList.add('active'); 
+
+      // 3. 리뷰 이미지 클릭 시 팝업 열기
+      reviewSlides.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+          currentReviewIndex = index;
+          openLightbox(currentReviewIndex);
+        });
+      });
+
+      // 4. 팝업 함수
+      function openLightbox(index) {
+        const src = reviewSlides[index].getAttribute('src');
+        const alt = reviewSlides[index].getAttribute('alt');
+        lbImg.setAttribute('src', src);
+        lbImg.setAttribute('alt', alt);
+        lbOverlay.classList.add('visible');
+        // GNB 숨기기 (옵션: GNB가 겹쳐 보일 경우 사용)
+        // document.getElementById('gnb').style.display = 'none';
+      }
+
+      function closeLightbox() {
+        lbOverlay.classList.remove('visible');
+        // GNB 다시 보이기 (옵션: GNB가 겹쳐 보일 경우 사용)
+        // document.getElementById('gnb').style.display = 'block';
+      }
+
+      function changeSlide(direction) {
+        currentReviewIndex = (currentReviewIndex + direction + reviewSlides.length) % reviewSlides.length;
+        openLightbox(currentReviewIndex);
+      }
+
+      // 5. 이벤트 리스너 연결
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', () => changeSlide(-1)); // 이전
+      lbNext.addEventListener('click', () => changeSlide(1));  // 다음
+
+      // 배경(오버레이) 클릭 시에도 닫기
+      lbOverlay.addEventListener('click', (e) => {
+        if (e.target === lbOverlay) closeLightbox();
+      });
+
+      // 키보드 제어 (옵션: ESC 닫기, 좌우 화살표 이동)
+      document.addEventListener('keydown', (e) => {
+        if (lbOverlay.classList.contains('visible')) {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') changeSlide(-1);
+          if (e.key === 'ArrowRight') changeSlide(1);
+        }
+      });
+    }
+    // ===== PIE CHART (순수익 강조) =====
+    const pieData = [
+      { name: '순수익',        value: 1210, pct: 30.25, color: '#C9A96E' },
+      { name: '본사 발주금액', value: 1350, pct: 33.75, color: '#A0845C' },
+      { name: '주류발주금액',  value: 120,  pct: 3,     color: '#8B6342' },
+      { name: '인건비',        value: 700,  pct: 17.5,  color: '#6B4226' },
+      { name: '임대료',        value: 270,  pct: 6.75,  color: '#4A2C1A' },
+      { name: '기타비용',      value: 350,  pct: 8.75,  color: '#3D1F0E' }
+    ];
+
+    function drawPieChart() {
+      const svg = document.querySelector('#pieChart svg');
+      const r = 80, cx = 120, cy = 120;
+      const circumference = 2 * Math.PI * r;
+      let offset = 0;
+      svg.querySelectorAll('.pie-seg').forEach(el => el.remove());
+
+      pieData.forEach((d) => {
+        const segLength = (d.pct / 100) * circumference;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.classList.add('pie-seg');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', r);
+        circle.setAttribute('fill', 'none');
+        circle.setAttribute('stroke', d.color);
+        circle.setAttribute('stroke-width', d.name === '순수익' ? '44' : '40');
+        
+        // 초기 상태: 선의 길이를 0으로 설정 (애니메이션을 위함)
+        circle.setAttribute('stroke-dasharray', `0 ${circumference}`);
+        circle.setAttribute('stroke-dashoffset', `${-offset}`);
+        circle.style.transition = 'stroke-dasharray 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        
+        // 실제 그려져야 할 목표 길이를 data 속성에 임시 저장
+        circle.dataset.dasharray = `${segLength} ${circumference - segLength}`;
+        
+        svg.appendChild(circle);
+        offset += segLength;
+      });
+
+      // 범례 렌더링
+      const legend = document.getElementById('pieLegend');
+      legend.innerHTML = '';
+      pieData.forEach(d => {
+        const bold = d.name === '순수익' ? 'font-weight:900; font-size:1rem;' : '';
+        legend.innerHTML += `
+          <div class="pie-legend-item" style="${bold}">
+            <span class="left"><span class="dot" style="background:${d.color}"></span><span class="name">${d.name}</span></span>
+            <span class="value">${d.value.toLocaleString()}만원 (${d.pct}%)</span>
+          </div>`;
+      });
+    }
+    drawPieChart();
+
+    // 스크롤 시 파이 차트 애니메이션 실행 옵저버
+    const pieChartEl = document.getElementById('pieChart');
+    if (pieChartEl) {
+      const pieObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // CSS 애니메이션 트리거 클래스 추가 (회전 및 텍스트 줌인)
+            pieChartEl.classList.add('animated');
+            
+            // SVG 선 채우기 애니메이션 실행
+            const segments = pieChartEl.querySelectorAll('.pie-seg');
+            segments.forEach(seg => {
+              seg.setAttribute('stroke-dasharray', seg.dataset.dasharray);
+            });
+            
+            pieObserver.unobserve(entry.target); // 한 번만 실행되도록
+          }
+        });
+      }, { threshold: 0.4 });
+      pieObserver.observe(pieChartEl);
+    }
+
+    // ===== Reviews Slider =====
+    (function() {
+      const reviewsTrack = document.getElementById('reviewsTrack');
+      if (!reviewsTrack) return;
+      const reviewsSlides = reviewsTrack.querySelectorAll('.reviews-slide');
+      const totalReviewSlides = reviewsSlides.length;
+      const reviewsDots = document.querySelectorAll('.reviews-dots .reviews-dot');
+      let currentReviewSlide = 0;
+      let reviewAutoTimer = null;
+
+      function goToReviewSlide(index) {
+        currentReviewSlide = (index + totalReviewSlides) % totalReviewSlides;
+        reviewsTrack.style.transform = `translateX(-${currentReviewSlide * 100}%)`;
+        reviewsDots.forEach((d, i) => d.classList.toggle('active', i === currentReviewSlide));
+      }
+      window.reviewsPrev = function() { goToReviewSlide(currentReviewSlide - 1); resetReviewAuto(); };
+      window.reviewsNext = function() { goToReviewSlide(currentReviewSlide + 1); resetReviewAuto(); };
+
+      reviewsDots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goToReviewSlide(i); resetReviewAuto(); });
+      });
+
+      function startReviewAuto() {
+        reviewAutoTimer = setInterval(() => goToReviewSlide(currentReviewSlide + 1), 5000);
+      }
+      function resetReviewAuto() {
+        if (reviewAutoTimer) clearInterval(reviewAutoTimer);
+        startReviewAuto();
+      }
+      goToReviewSlide(0);
+      startReviewAuto();
+    })();
+
+    // ===== Diagnosis Test =====
+    function toggleDiag(item) {
+      const cb = item.querySelector('.diag-checkbox');
+      cb.classList.toggle('checked');
+      updateDiagCount();
+    }
+    function updateDiagCount() {
+      const count = document.querySelectorAll('.diag-checkbox.checked').length;
+      document.getElementById('diagCount').textContent = count;
+      const warning = document.getElementById('diagWarning');
+      warning.style.display = count >= 3 ? 'block' : 'none';
+    }
+
+    // ===== ROI Bar Animation =====
+    const roiChart = document.getElementById('roiChart');
+    if (roiChart) {
+      const roiObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bars = roiChart.querySelectorAll('.roi-bar-fill');
+            bars.forEach((bar, i) => {
+              setTimeout(() => {
+                bar.style.width = bar.dataset.width;
+              }, i * 200);
+            });
+            roiObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      roiObserver.observe(roiChart);
+    }
+
+    // ===== Floating Bar =====
+    const floatingBar = document.getElementById('floatingBar');
+    const contactSection = document.getElementById('contact');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const windowH = window.innerHeight;
+      const contactTop = contactSection.offsetTop;
+      if (scrollY > windowH * 0.8 && scrollY + windowH < contactTop + 200) {
+        floatingBar.classList.add('visible');
+      } else {
+        floatingBar.classList.remove('visible');
+      }
+    });
+
+    // ===== Smooth Scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          const offset = 70;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        document.getElementById('gnbMenu').classList.remove('open');
+      });
+    });
+    // ===== 세트 메뉴 클릭 팝업 슬라이드 로직 =====
+    const setMenuData = [
+      { name: '커플세트', img: 'images/menu-coupleset.jpeg', alt: '고명 커플세트 - 삼겹살과 목살 2인 추천 가성비 메뉴' },
+      { name: '특수부위 세트', img: 'images/menu-specialset.jpeg', alt: '고명 특수부위 세트 - 특수부위와 삼겹살의 다채로운 구성' },
+      { name: '가족세트', img: 'images/menu-familyset.jpeg', alt: '고명 가족세트 - 온 가족이 넉넉하게 즐기는 푸짐한 돼지고기 메뉴' }
+    ];
+    
+    let currentSetMenuIndex = 0;
+    const setMenuModal = document.getElementById('setMenuModal');
+    const setMenuModalImg = document.getElementById('setMenuModalImg');
+    const setMenuModalName = document.getElementById('setMenuModalName');
+
+    function openSetMenuModal(index) {
+      currentSetMenuIndex = index;
+      updateSetMenuModalView();
+      setMenuModal.classList.add('visible');
+    }
+
+    function closeSetMenuModal() {
+      setMenuModal.classList.remove('visible');
+    }
+
+    function changeSetMenuSlide(step) {
+      currentSetMenuIndex += step;
+      if (currentSetMenuIndex >= setMenuData.length) currentSetMenuIndex = 0;
+      else if (currentSetMenuIndex < 0) currentSetMenuIndex = setMenuData.length - 1;
+      updateSetMenuModalView();
+    }
+
+    function updateSetMenuModalView() {
+      const menu = setMenuData[currentSetMenuIndex];
+      setMenuModalImg.src = menu.img;
+      setMenuModalImg.alt = menu.alt; // SEO 최적화 반영
+      setMenuModalName.innerText = menu.name;
+    }
+
+    // 배경 클릭 시 닫기
+    setMenuModal.addEventListener('click', (e) => {
+      if (e.target === setMenuModal) closeSetMenuModal();
+    });
+
+    // 키보드 방향키 및 ESC 닫기 제어
+    document.addEventListener('keydown', (e) => {
+      if (setMenuModal.classList.contains('visible')) {
+        if (e.key === 'Escape') closeSetMenuModal();
+        if (e.key === 'ArrowLeft') changeSetMenuSlide(-1);
+        if (e.key === 'ArrowRight') changeSetMenuSlide(1);
+      }
+    });
+    // ===== 각종 소스 클릭 팝업 로직 =====
+    const sauceModal = document.getElementById('sauceModal');
+
+    function openSauceModal() {
+      if(sauceModal) sauceModal.classList.add('visible');
+    }
+
+    function closeSauceModal() {
+      if(sauceModal) sauceModal.classList.remove('visible');
+    }
+
+    if (sauceModal) {
+      sauceModal.addEventListener('click', (e) => {
+        if (e.target === sauceModal) closeSauceModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sauceModal && sauceModal.classList.contains('visible')) {
+        closeSauceModal();
+      }
+    });
+    // ===== 율하점 인테리어 6장 자동 슬라이드 =====
+    const yulhaSlides = document.querySelectorAll('.yulha-slider .slide');
+    if(yulhaSlides.length > 0) {
+      let currentYulhaSlide = 0;
+  
+      setInterval(() => {
+        // 현재 이미지 서서히 숨기기
+        yulhaSlides[currentYulhaSlide].classList.remove('active');
+    
+        // 다음 이미지 인덱스 계산
+        currentYulhaSlide = (currentYulhaSlide + 1) % yulhaSlides.length;
+    
+        // 다음 이미지 서서히 나타내기
+        yulhaSlides[currentYulhaSlide].classList.add('active');
+      }, 2500); // 2500 = 2.5초마다 변경 (원하시면 숫자 수정 가능)
+    }
+    // ===== 자은점 인테리어 4장 자동 슬라이드 =====
+    const jaeunSlides = document.querySelectorAll('.jaeun-slider .slide');
+    if(jaeunSlides.length > 0) {
+      let currentJaeunSlide = 0;
+  
+      setInterval(() => {
+        // 현재 이미지 서서히 숨기기
+        jaeunSlides[currentJaeunSlide].classList.remove('active');
+    
+        // 다음 이미지 인덱스 계산
+        currentJaeunSlide = (currentJaeunSlide + 1) % jaeunSlides.length;
+    
+        // 다음 이미지 서서히 나타내기
+        jaeunSlides[currentJaeunSlide].classList.add('active');
+      }, 2700); // 2700 = 2.7초마다 변경 (율하점과 살짝 엇박자로 넘어가게 설정)
+    }
+  </script>
+</body>
+</html>
