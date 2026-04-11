@@ -18,6 +18,8 @@
       background: #FAF6F0;
       overflow-x: hidden;
       line-height: 1.7;
+      /* 👇 전체 자간 -40 (0.04em) 적용 👇 */
+      letter-spacing: -0.04em;
     }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
@@ -184,6 +186,25 @@
     @keyframes scrollBounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(8px); }
+    }
+        /* PC에서는 모바일 전용 줄바꿈을 숨깁니다 */
+    .mo-only {
+      display: none;
+    }
+
+    /* 모바일 화면(768px 이하) 설정 */
+    @media (max-width: 768px) {
+      /* 모바일에서만 줄바꿈이 작동하도록 합니다 */
+      .mo-only {
+        display: block;
+      }
+      
+      /* 이전 답변에서 요청하신 폰트 사이즈 5 감소 및 자간 설정 적용 */
+      .hero-content h1 {
+        font-size: 31px; /* 기존 clamp 혹은 36px에서 5 감소 */
+        letter-spacing: -0.04em; /* 자간 -40 적용 */
+        line-height: 1.4;
+      }
     }
 
     /* ===== SECTION COMMON ===== */
@@ -1773,8 +1794,8 @@
         <img src="images/logo.png" alt="고명 로고">
       </div>
       <h1>
-        여러분의 저녁에 저희 <span class="highlight">고명</span>을 얹어<br />
-        편안함을 더해드리겠습니다.
+        여러분의 저녁에<br class="mo-only"> 저희 <span class="highlight">고명</span>을 얹어<br />
+        편안함을<br class="mo-only"> 더해드리겠습니다.
       </h1>
       <p class="hero-bottom-line">
         공간에 맛을 채워,<br />
@@ -1893,7 +1914,7 @@
         <span class="section-tag">CUSTOMER REVIEWS</span>
         <h2 class="section-title" style="color:var(--brown-dark)">실제 방문 후기,<br />고객이 <span style="color:var(--gold)">증명</span>합니다.</h2>
         <div class="reviews-key-copy">
-          고객 재방문율 <strong>80%</strong> · 고객 만족도 <strong>100%</strong>
+          고객 재방문율 <strong>80%</strong><br />고객 만족도 <strong>100%</strong>
         </div>
       </div>
 
@@ -2304,7 +2325,7 @@
     <div class="text-center reveal">
       <span class="section-tag">SYSTEM</span>
       <h2 class="section-title">전문가의 시스템으로<br /><span style="color:var(--gold)">완성된 성공 프로세스</span></h2>
-      <p class="section-desc" style="margin:0 auto;">본사가 이끄는 대로만 따라오십시오. 성공은 시스템이 만듭니다.</p>
+      <p class="section-desc" style="margin:0 auto;">본사가 이끄는 대로만 따라오십시오.<br />성공은 시스템이 만듭니다.</p>
     </div>
 
     <div class="system-roadmap reveal">
@@ -2428,7 +2449,7 @@
       <div class="roi-header reveal">
         <span class="section-tag">ROI</span>
         <h2 class="section-title">창업 비용,<br />언제 다 <span style="color:var(--gold)">회수</span>할 수 있을까요?</h2>
-        <div class="roi-hero-number">월 매출 = 창업 비용<br />고명 평균 회수 기간 2개월</div>
+        <div class="roi-hero-number">월 매출 = 창업 비용<br />고명 평균 회수 기간<br />2개월</div>
         <p class="roi-hero-sub">고명은 빠른 투자금 회수가 가능한 구조입니다.</p>
       </div>
       <div class="roi-chart reveal" id="roiChart">
